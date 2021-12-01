@@ -1,0 +1,50 @@
+{% extends 'base_layout.html' %}
+
+
+
+        
+{% block bodycontent %}        
+    <h2 class="container text-center">Create New Account</h2>
+    <h6 class="text-center"><em>(All details are mandatory)</em></h6>
+    <br>
+    
+    <form class="container" action="/accounts/register/" method="post">
+        {% csrf_token %}
+        <section class="form-control">
+            <h4>Enter basic details</h4>
+            {{ form }}
+        </section>
+        <section>
+            <input type="checkbox" required> 
+            <small>By clicking "Create account" you agree to our  
+                <a href="#">Terms and Conditions</a>.</small>
+        </section>
+        <input type="submit" class="form-control btn btn-danger" value="Create account" name="submit"/>
+        
+    </form>
+
+  
+{% endblock %}
+
+{% block scriptcontent %}
+    <script>
+        $(".active").removeClass("active");
+        $("#nav-create").addClass("active");
+
+        $(".helptext").html("");
+
+        var input_text = $("input[type=text]");
+        input_text.addClass("form-control");
+
+        var input_pass = $("input[type=password]");
+        input_pass.addClass("form-control");
+
+        $("form ul li").addClass("btn btn-danger");
+
+        // var labels = $("label");
+
+        // labels.addClass("col");
+        // input_text.addClass("col")
+        // input_pass.addClass("col");
+    </script>
+{% endblock %}
